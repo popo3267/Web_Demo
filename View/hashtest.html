@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Hash Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <form id="hashForm">
+        <label for="inputValue">Enter Value:</label>
+        <input type="text" id="inputValue" name="inputValue">
+        <button type="button" id="hashButton">Hash Value</button>
+    </form>
+    <p id="hashedValue"></p>
+
+    <script>
+        $(document).ready(function(){
+            $('#hashButton').click(function(){
+                // 獲取 input 的值
+                var inputValue = $('#inputValue').val();
+
+                // 使用 CryptoJS 進行 SHA-256 Hash
+                var hashedValue = CryptoJS.SHA256(inputValue).toString(CryptoJS.enc.Hex);
+
+                // 將Hash值顯示在頁面上
+                $('#hashedValue').text('Hashed Value: ' + hashedValue);
+            });
+        });
+    </script>
+</body>
+</html>
